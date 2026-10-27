@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101421">
+  <title>Consistency Quest</title>
+  <link rel="manifest" href="manifest.json">
+  <style>
+    :root{--bg:#f4fbf7;--card:#ffffff;--ink:#17352a;--muted:#638075;--accent:#35c77a;--gold:#e6a817;--danger:#d95364;--line:#dcece4}
+    *{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#ecfff4 0%,var(--bg) 45%,#f7fbff 100%);color:var(--ink);font:16px system-ui,-apple-system,sans-serif}.wrap{max-width:720px;margin:auto;padding:18px 16px 100px}h1{font-size:25px;margin:5px 0}.sub{color:var(--muted);margin:0 0 18px}.card{background:var(--card);border-radius:18px;padding:16px;margin:12px 0}.row{display:flex;gap:10px;justify-content:space-between;align-items:center}.xp{font-size:26px;font-weight:800;color:var(--gold)}.bar{height:10px;background:#dcece4;border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--accent)}label{display:block;color:var(--muted);font-size:13px;margin-top:12px}input,select{width:100%;padding:12px;background:#f9fffb;border:1px solid #b9d8c8;border-radius:10px;color:var(--ink);font-size:16px}button{padding:12px 14px;border:0;border-radius:12px;background:var(--accent);font-weight:750;color:#08130d;cursor:pointer}button.secondary{background:#e7f4ed;color:#244b3b}button.danger{background:#ffe7ea;color:#a52e43}.exercise{border-top:1px solid var(--line);padding:12px 0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.grid.two{grid-template-columns:repeat(2,1fr)}.nav{position:fixed;bottom:0;left:0;right:0;background:#ffffff;padding:8px max(8px,env(safe-area-inset-right)) calc(8px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;z-index:10}.nav button{min-width:0;width:100%;padding:10px 6px;font-size:13px;white-space:normal;line-height:1.15}.nav button{background:#e7f4ed;color:#244b3b}.nav button.active{background:var(--accent);color:#08130d}.small{font-size:13px;color:var(--muted)}.pill{display:inline-block;padding:4px 8px;border-radius:99px;background:#e8f7ef;color:#256a48;font-size:12px}.mastery{color:#7357c7}.good{color:var(--accent)}.warning{color:var(--gold)}.hide{display:none}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.menu-card{display:block;width:100%;text-align:left;color:var(--ink);border:0}.menu-card h3{margin:0 0 8px}.menu-card .row{width:100%}.achievement{padding:12px;border:1px solid var(--line);border-radius:14px;margin:10px 0;background:#fbfffd}.pb{font-size:20px;font-weight:800;color:#7357c7}.locked{opacity:.55}.skill-summary{padding:14px 0}.skill-bar{height:12px;margin:9px 0 6px}.skill-bar i{background:linear-gradient(90deg,#35c77a,#78dfaa)}.horizon{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--line)}.horizon:first-child{border-top:0}.reward-overlay{position:fixed;inset:0;background:#17352acc;z-index:50;display:grid;place-items:center;padding:20px}.reward-overlay[hidden]{display:none}.reward-card{background:#fff;border-radius:22px;padding:24px;text-align:center;max-width:360px;width:100%;box-shadow:0 20px 60px #0004}.reward-xp{font-size:42px;font-weight:900;color:var(--gold)}.recovery-first{border:2px solid #35c77a;background:linear-gradient(135deg,#f2fff8,#fff)}.save-health{margin:12px 0;padding:10px;border-radius:12px;background:#f5f7f6}.save-health strong{color:#17352a}@media(max-width:520px){.grid{grid-template-columns:1fr 1fr}.xp{font-size:22px}.nav button{padding:10px 8px;font-size:12px}}
+  .cape-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.cape-grid .achievement{margin:0}.cape{min-height:112px;text-align:center}.cape-icon{font-size:30px;margin-bottom:6px}.cape-unlocked{background:linear-gradient(135deg,#effff6,#fff8df);border-color:#78dfaa}.max-cape{grid-column:1/-1;border:2px solid var(--gold)}.achievement-group{border-top:1px solid var(--line);padding:4px 0}.achievement-group:first-child{border-top:0}.achievement-group summary{display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;padding:12px 2px;list-style:none}.achievement-group summary::-webkit-details-marker{display:none}.achievement-group summary:after{content:"▾";color:var(--muted)}.achievement-group[open] summary:after{content:"▴"}.achievement-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:0 0 12px}.achievement-list .achievement{margin:0}@media(max-width:520px){.achievement-list{grid-template-columns:1fr}}.pb-history{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}.pb-history summary{cursor:pointer;font-weight:700}.history-row{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:13px}.history-row span:last-child{text-align:right}.pb-card{margin-bottom:10px}</style>
+</head>
+<body>
+<div id="appError" hidden style="margin:12px;padding:12px;background:#ffe7ea;color:#a52e43;border-radius:10px" role="alert"></div>
+<div class="wrap">
+  <h1>🎮 Consistency Quest</h1>
+  <p class="sub">Consistency first. Effort recognised. Recovery respected.</p>
+
+  <section id="onboarding" hidden>
+    <div class="card">
+      <h2>Welcome to Consistency Quest</h2>
+      <p>Set an optional starting baseline. Measurements stay in this browser and never award XP or change your level.</p>
+      <div class="grid two">
+        <div><label>Body measurement unit</label><select id="measurementUnit"><option value="cm">cm</option><option value="in">inches</option></select></div>
+        <div><label>Weight unit</label><select id="measurementWeightUnit"><option value="lb">lb</option><option value="kg">kg</option></select></div>
+      </div>
+      <label>Height</label><input id="m_height" type="number" min="0" step="0.1">
+      <div class="grid two">
+        <div><label>Waist</label><input id="m_waist" type="number" min="0" step="0.1"></div>
+        <div><label>Chest</label><input id="m_chest" type="number" min="0" step="0.1"></div>
+        <div><label>Weight (optional)</label><input id="m_weight" type="number" min="0" step="0.1"></div>
+      </div>
+      <div class="actions"><button id="saveMeasurementsBtn" type="button">Save and start</button><button id="skipMeasurementsBtn" type="button" class="secondary">Skip for now</button></div>
+      <p id="measurementStatus" class="small" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+  <section id="dash">
+    <div class="card">
+      <div class="row"><div><b>ACCOUNT LEVEL <span id="level">1</span></b><div class="small"><span id="axp">0</span> / <span id="accountCap">0</span> XP</div></div><div class="xp" id="todayxp">+0 XP</div></div>
+      <div class="bar"><i id="accountbar" style="width:0%"></i></div>
+      <div class="small" id="accountProgress"></div>
+    </div>
+    <div class="card"><h3>🎯 Best next action</h3><div id="nextAction"></div><div class="actions"><button onclick="show('log')">Log progress</button></div></div>
+    <div class="card"><h3>Today's Quest</h3><div id="dailyScore"></div></div>
+    <div class="card"><h3>Progress horizons</h3><div id="consistencyHorizon"></div></div>
+    <div class="card"><h3>Closest achievement</h3><div id="badgeProgress"></div></div>
+    <div class="card recovery-first"><div class="row"><div><span class="pill">DATA SAFETY</span><h3>Protect or recover your account</h3></div></div><p class="small">Your save is local to this browser or installed shortcut. Export regularly, import a backup when moving between installations, or scan local recovery copies.</p><div id="dashboardSaveStatus" class="save-health"></div><div class="actions"><button type="button" onclick="exportSave()">Export account</button><button type="button" class="secondary" onclick="document.getElementById('importSaveInput').click()">Import account</button><button type="button" class="secondary" onclick="show('dataPage');updateRecoveryStatus()">Recovery centre</button></div></div>
+    <div class="card"><div class="row"><h3>Logged data</h3><span class="pill">Today + lifetime</span></div><div id="dashboardSummary"></div></div>
+    <button class="card menu-card" onclick="show('skillsPage')"><div class="row"><h3>Today's skills</h3><b>View ›</b></div><div id="skills"></div></button>
+    <button class="card menu-card" onclick="show('objectivesPage')"><div class="row"><h3>Daily objectives</h3><b>View ›</b></div><div id="objs"></div><p class="small">Body weight remains optional context and never awards XP.</p></button>
+    <button class="card menu-card" onclick="show('consistencyPage')"><div class="row"><h3>Consistency</h3><b>View ›</b></div><div id="consistency"></div></button>
+    <button class="card menu-card" onclick="show('achievements')"><div class="row"><h3>🏆 Achievements</h3><b>View ›</b></div><div id="dashboardAchievements"></div></button>
+  </section>
+
+  <section id="skillsPage" hidden><div class="card"><div class="row"><h2>Level screen</h2><button class="secondary" onclick="show('dash')">Back</button></div><div id="skillsDetail"></div><p class="small">Every skill reaches Level 99 at 100,000 XP. Earning rates differ by activity frequency so the intended time-to-mastery remains balanced. Each bar shows progress within the current level and the precise XP needed for the next level. Mastery recognises extra effort without accelerating Account Level.</p></div></section>
+  <section id="objectivesPage" hidden><div class="card"><div class="row"><h2>Daily objectives</h2><button class="secondary" onclick="show('dash')">Back</button></div><div id="objectivesDetail"></div><div class="actions"><button onclick="show('log')">Log today</button></div></div></section>
+  <section id="consistencyPage" hidden><div class="card"><div class="row"><h2>Consistency</h2><button class="secondary" onclick="show('dash')">Back</button></div><div id="consistencyDetail"></div><p class="small">Missed targets never remove XP already earned. Repeatable behaviour matters more than extreme sessions.</p></div></section>
+  <section id="log" hidden>
+    <div class="card">
+      <div class="row"><h3>Log day</h3><button type="button" class="secondary" onclick="selectToday()">Today</button></div>
+      <label for="logDate">Entry date</label><input id="logDate" type="date">
+      <p id="dateStatus" class="small">Choose today or an earlier date. Future dates cannot be logged.</p>
+    </div>
+    <div class="card">
+      <h3>Daily habits</h3>
+      <label>Protein consumed (g)</label><input id="protein" type="number" min="0">
+      <label>Personal protein target (g)</label><input id="proteinTarget" type="number" min="1" step="1">
+      <label>Steps</label><input id="steps" type="number" min="0">
+      <label>Calories consumed</label><input id="cal" type="number" min="0">
+      <label>Personal calorie target</label><input id="calorieTarget" type="number" min="1">
+      <label>Fruit and vegetable portions</label><input id="fruitVeg" type="number" min="0" step="1">
+      <p class="small">Nutrition XP: protein target progress up to 40, calorie-target accuracy up to 50, and 5+ fruit/veg portions earns 10. Eating further below target does not earn extra XP.</p>
+    </div>
+
+    <div class="card">
+      <div class="row"><h3>Strength workout</h3><span class="pill"><span id="exCount">0</span> logged</span></div>
+      <div id="exerciseForm" class="hide">
+        <label>Exercise</label><select id="ename"></select>
+        <div class="grid">
+          <div><label>Sets</label><input id="sets" type="number" min="1"></div>
+          <div><label>Reps</label><input id="reps" type="number" min="1"></div>
+          <div><label>Weight</label><input id="weight" type="number" min="0" step="0.1"></div>
+        </div>
+        <div class="grid two">
+          <div><label>Unit</label><select id="unit"><option>kg</option><option>lb</option><option>bodyweight</option></select></div>
+          <div><label>Effort (1–10, optional)</label><input id="effort" type="number" min="1" max="10"></div>
+        </div>
+        <div class="actions"><button onclick="saveExercise()">Save exercise</button><button class="secondary" onclick="toggleExerciseForm(false)">Cancel</button></div>
+      </div>
+      <div id="elist"></div>
+      <button id="addExerciseBtn" onclick="toggleExerciseForm(true)">➕ Add exercise</button>
+      <p class="small">Log the exercises you complete. Strength Account XP remains capped, while additional valid work can still contribute to mastery. Warm-ups do not earn XP.</p>
+    </div>
+
+    <div class="card">
+      <h3>Endurance session</h3>
+      <label>Cardio activity</label><select id="cardioActivity"></select>
+      <div class="grid">
+        <div><label>Minutes</label><input id="cardioMinutes" type="number" min="0"></div>
+        <div><label>Effort (1–10)</label><input id="cardioEffort" type="number" min="1" max="10"></div>
+        <div><label>Distance (optional)</label><input id="cardioDistance" type="number" min="0" step="0.1"></div>
+      </div>
+      <label>Distance unit</label><select id="cardioUnit"><option>km</option><option>miles</option><option>metres</option><option>lengths</option></select>
+      <p class="small">Endurance rewards a meaningful, logged cardio session. Intense or excessively long sessions have diminishing returns.</p>
+    </div>
+
+    <div class="card">
+      <button id="saveDayBtn" type="button" onclick="return saveDay()">Save day</button>
+      <p id="saveStatus" class="small" role="status" aria-live="polite"></p>
+      <p class="small">Saving the same date updates its record rather than awarding the day twice.</p>
+    </div>
+  </section>
+
+  <section id="achievements" hidden>
+    <div class="card"><div class="row"><h2>🏆 Achievements</h2><button class="secondary" onclick="show('dash')">Back</button></div><p class="small">Your lifetime records stay permanent. Current Form shows what you are demonstrating now.</p></div>
+    <div class="card"><h3>Current Form</h3><div id="formSummary"></div></div>
+    <div class="card"><h3>Strength Personal Bests</h3><p class="small">PBs use the exercise name, unit and performance stored with each historical log. kg and lb records are kept separate.</p><div id="strengthPBs"></div></div>
+    <div class="card"><h3>Endurance Records</h3><div id="endurancePBs"></div></div>
+    <div class="card"><h3>🧥 Skill Capes</h3><p class="small">Reach Level 99 in a skill to unlock its cape. Unlock all five skill capes to earn the Max Cape.</p><div id="skillCapes"></div></div>
+    <div class="card"><h3>🏆 Achievement Mastery Capes</h3><p class="small">Complete the 250 milestone in an achievement track to unlock its mastery cape. Complete every mastery track to unlock the Max Sessions Mastery Cape.</p><div id="masteryCapes"></div></div>
+    <div class="card"><h3>Consistency Achievements</h3><div id="achievementBadges"></div></div>
+  </section>
+  <section id="history" hidden>
+    <div class="card"><div class="row"><h2>Saved days</h2><button class="secondary" onclick="selectToday()">Log today</button></div><p class="small">Open any saved date to correct or complete it. Saving replaces that date's record and recalculates the game.</p><div id="dayHistory"></div></div>
+    <div class="card"><h3>Strength history</h3><div id="baselines"></div></div>
+    <div class="card"><h3>Endurance history</h3><div id="cardioHistory"></div></div>
+    <div class="card"><h3>Lifetime mastery</h3><div id="masteryHistory"></div><p class="small">Mastery recognises strong effort above the daily Account XP ceiling. It does not accelerate Account Level, Reward Tokens or Health XP.</p></div>
+  </section>
+</div>
+  <section id="dataPage" hidden>
+    <div class="pagehead"><button class="back" onclick="show('dash')">← Back</button><h2>Recovery centre</h2></div>
+    <div class="card"><h3>Current local save</h3><p>Your progress is stored locally in this browser installation. Export before changing devices, browsers or website addresses.</p><p id="dataStatus" class="small"></p><div id="recoveryBanner" class="small"></div></div>
+    <div class="card"><h3>Export account</h3><p>Downloads a JSON copy of your complete account, daily logs, targets, XP and profile.</p><button id="exportSaveBtn" type="button">Export save</button></div>
+    <div class="card"><h3>Import account</h3><p>Imports a Consistency Quest JSON backup. The current save is copied to a safety backup before replacement.</p><input id="importSaveInput" type="file" accept="application/json,.json" hidden><button id="importSaveBtn" type="button" class="secondary">Choose backup to import</button></div>
+    <div class="card"><h3>Recovery scan</h3><p id="recoveryStatus" class="small"></p><button id="recoverBestBtn" type="button">Recover best available local save</button><p class="small">This can recover from cq3, the rolling backup or the pre-import backup in this browser installation. It cannot read storage belonging to a different website address or browser installation.</p></div>
+    <div class="card"><h3>Safety backup</h3><p>The app keeps a rolling browser-local backup and a separate pre-import backup where available.</p><button id="restoreBackupBtn" type="button" class="secondary">Restore latest safety backup</button><p id="dataMessage" class="small" role="status"></p></div>
+  </section>
+<div id="rewardOverlay" class="reward-overlay" hidden><div class="reward-card"><div id="rewardBody"></div><button onclick="closeReward()">Continue</button></div></div>
+<nav class="nav" aria-label="Primary"><button data-page="dash" onclick="show('dash')">Dashboard</button><button data-page="skillsPage" onclick="show('skillsPage')">Skills</button><button data-page="log" onclick="show('log')">Log day</button><button data-page="history" onclick="show('history')">History</button><button data-page="onboarding" onclick="loadMeasurements();show('onboarding')">Measurements</button></nav>
+<script src="app.js?v=38"></script>
+</body>
+</html>
